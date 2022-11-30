@@ -83,6 +83,7 @@ Experimental
    experimental/fix.rst
    experimental/nextafter.rst
    experimental/zeta.rst
+   experimental/gradient.rst
    experimental/SparseArray.rst
    experimental/NativeSparseArray.rst
 
