@@ -10180,6 +10180,17 @@
 <span class="sd">        a container containing the element-wise results.</span>
 <span class="sd">        The returned container must have a data type determined by</span>
 <span class="sd">        :ref:`type-promotion`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a = ivy.array([89]), b = ivy.array([3]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a = ivy.array([12]), b = ivy.array([5]))</span>
+<span class="sd">    &gt;&gt;&gt; z = ivy.Container.static_bitwise_xor(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([85]),</span>
+<span class="sd">        b: ivy.array([6])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;bitwise_xor&quot;</span><span class="p">,</span>
@@ -10242,11 +10253,14 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a = ivy.array([89]))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a = ivy.array([12]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a = ivy.array([89]), b = ivy.array([3]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a = ivy.array([12]), b = ivy.array([5]))</span>
 <span class="sd">    &gt;&gt;&gt; z = x.bitwise_xor(y)</span>
 <span class="sd">    &gt;&gt;&gt; print(z)</span>
-<span class="sd">    {a:ivy.array([85])}</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([85]),</span>
+<span class="sd">        b: ivy.array([6])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_bitwise_xor</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -10298,6 +10312,17 @@
 <span class="sd">    ret</span>
 <span class="sd">        an container containing the rounded result for each element in ``x``.</span>
 <span class="sd">        The returned array must have the same data type as ``x``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([2.5, 0.5, -1.4]),</span>
+<span class="sd">    ...                   b=ivy.array([5.4, -3.2, 5.2]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container.static_ceil(x)</span>
+<span class="sd">    &gt;&gt;&gt; print(y)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([3., 1., -1.]),</span>
+<span class="sd">        b: ivy.array([6., -3., 6.])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;ceil&quot;</span><span class="p">,</span>
@@ -10933,6 +10958,17 @@
 <span class="sd">        a container containing the evaluated result for each element in ``x``.</span>
 <span class="sd">        The returned array must have areal-valued floating-point data type</span>
 <span class="sd">        determined by :ref:`type-promotion`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Container` static method:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1, 2]), b=ivy.array([3, 4]))</span>
+<span class="sd">    &gt;&gt;&gt; print(ivy.Container.static_expm1(x))</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([1.71828175, 6.38905621]),</span>
+<span class="sd">        b: ivy.array([19.08553696, 53.59815216])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;expm1&quot;</span><span class="p">,</span>
@@ -10998,7 +11034,7 @@
 
 <span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([0., 0.]))</span>
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([4., -2.]))</span>
-<span class="sd">    &gt;&gt;&gt; _ = x.expm1(out=y)</span>
+<span class="sd">    &gt;&gt;&gt; x.expm1(out=y)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
 <span class="sd">        a: ivy.array([53.6, -0.865])</span>
@@ -11053,6 +11089,17 @@
 <span class="sd">    ret</span>
 <span class="sd">        a container containing the rounded result for each element in ``x``. The</span>
 <span class="sd">        returned array must have the same data type as ``x``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([2.5, 0.5, -1.4]),</span>
+<span class="sd">    ...                   b=ivy.array([5.4, -3.2, 5.2]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container.static_floor(x)</span>
+<span class="sd">    &gt;&gt;&gt; print(y)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([2., 0., -2.]),</span>
+<span class="sd">        b: ivy.array([5., -4., 5.])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;floor&quot;</span><span class="p">,</span>
@@ -11703,6 +11750,19 @@
 <span class="sd">        a container containing the test result. An element ``out_i`` is ``True``</span>
 <span class="sd">        if ``x_i`` is either positive or negative infinity and ``False``</span>
 <span class="sd">        otherwise. The returned array must have a data type of ``bool``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Container` input:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([-1, -float(&#39;inf&#39;), 1.23]),</span>
+<span class="sd">    ...                   b=ivy.array([float(&#39;inf&#39;), 3.3, -4.2]))</span>
+<span class="sd">    &gt;&gt;&gt; z = ivy.Container.static_isinf(x)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([False, True, False]),</span>
+<span class="sd">        b: ivy.array([True, False, False])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;isinf&quot;</span><span class="p">,</span>
@@ -11754,6 +11814,19 @@
 <span class="sd">        a container containing the test result. An element ``out_i`` is ``True``</span>
 <span class="sd">        if ``self_i`` is either positive or negative infinity and ``False``</span>
 <span class="sd">        otherwise. The returned array must have a data type of ``bool``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Container` input:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([-1, -float(&#39;inf&#39;), 1.23]),</span>
+<span class="sd">    ...                   b=ivy.array([float(&#39;inf&#39;), 3.3, -4.2]))</span>
+<span class="sd">    &gt;&gt;&gt; z = x.isinf()</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([False, True, False]),</span>
+<span class="sd">        b: ivy.array([True, False, False])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_isinf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
