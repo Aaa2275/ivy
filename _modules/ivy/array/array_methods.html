@@ -856,6 +856,35 @@
 
 
 <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ivy.Array special method variant of ivy.abs. This method</span>
+<span class="sd">    simply wraps the function, and so the docstring for ivy.abs</span>
+<span class="sd">    also applies to this method with minimal changes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    self</span>
+<span class="sd">        input array. Should have a numeric data type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        an array containing the absolute value of each element</span>
+<span class="sd">        in ``self``. The returned array must have the same data</span>
+<span class="sd">        type as ``self``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Array` input:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([6, -2, 0, -1])</span>
+<span class="sd">    &gt;&gt;&gt; print(abs(x))</span>
+<span class="sd">    ivy.array([6, 2, 0, 1])</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([-1.2, 1.2])</span>
+<span class="sd">    &gt;&gt;&gt; print(abs(x))</span>
+<span class="sd">    ivy.array([1.2, 1.2])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
 
 
@@ -3793,6 +3822,31 @@
 <span class="sd">    ret</span>
 <span class="sd">        An array with the elements of x1, but clipped to not be lower than the x2</span>
 <span class="sd">        values.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Array` inputs:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([7, 9, 5])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.array([9, 3, 2])</span>
+<span class="sd">    &gt;&gt;&gt; z = x.maximum(y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    ivy.array([9, 9, 5])</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([1, 5, 9, 8, 3, 7])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.array([[9], [3], [2]])</span>
+<span class="sd">    &gt;&gt;&gt; z = ivy.zeros((3, 6))</span>
+<span class="sd">    &gt;&gt;&gt; x.maximum(y, out=z)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    ivy.array([[9.,9.,9.,9.,9.,9.],</span>
+<span class="sd">               [3.,5.,9.,8.,3.,7.],</span>
+<span class="sd">               [2.,5.,9.,8.,3.,7.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[7, 3]])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.array([0, 7])</span>
+<span class="sd">    &gt;&gt;&gt; x.maximum(y, out=x)</span>
+<span class="sd">    &gt;&gt;&gt; print(x)</span>
+<span class="sd">    ivy.array([[7, 7]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">use_where</span><span class="o">=</span><span class="n">use_where</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
 
@@ -3825,6 +3879,31 @@
 <span class="sd">    -------</span>
 <span class="sd">    ret</span>
 <span class="sd">        An array with the elements of x1, but clipped to not exceed the x2 values.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Array` inputs:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([7, 9, 5])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.array([9, 3, 2])</span>
+<span class="sd">    &gt;&gt;&gt; z = x.minimum(y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    ivy.array([7, 3, 2])</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([1, 5, 9, 8, 3, 7])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.array([[9], [3], [2]])</span>
+<span class="sd">    &gt;&gt;&gt; z = ivy.zeros((3, 6))</span>
+<span class="sd">    &gt;&gt;&gt; x.minimum(y, out=z)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    ivy.array([[1.,5.,9.,8.,3.,7.],</span>
+<span class="sd">               [1.,3.,3.,3.,3.,3.],</span>
+<span class="sd">               [1.,2.,2.,2.,2.,2.]])</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[7, 3]])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.array([0, 7])</span>
+<span class="sd">    &gt;&gt;&gt; x.minimum(y, out=x)</span>
+<span class="sd">    &gt;&gt;&gt; print(x)</span>
+<span class="sd">    ivy.array([[0, 3]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">use_where</span><span class="o">=</span><span class="n">use_where</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
 

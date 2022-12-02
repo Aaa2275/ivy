@@ -5403,6 +5403,34 @@
 
 
 <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ivy.Container special method for the abs operator, calling</span>
+<span class="sd">    :code:`operator.abs` for each of the corresponding leaves of the</span>
+<span class="sd">    two containers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    self</span>
+<span class="sd">        input Container. Should have leaves with numeric data type.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        A container containing the element-wise results.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :class:`ivy.Container` instances:</span>
+
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1, -2, 3]),</span>
+<span class="sd">    ...                    b=ivy.array([-1, 0, 5]))</span>
+<span class="sd">    &gt;&gt;&gt; y = abs(x)</span>
+<span class="sd">    &gt;&gt;&gt; print(y)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([1, 2, 3]),</span>
+<span class="sd">        b: ivy.array([1, 0, 5])</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">kc</span><span class="p">:</span> <span class="n">operator</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">map_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
@@ -16220,6 +16248,20 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">        Container object with all sub-arrays having the minimum values computed.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With multiple :class:`ivy.Container` inputs:</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1, 3, 1]),</span>
+<span class="sd">    ...                   b=ivy.array([2, 8, 5]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([1, 5, 6]),</span>
+<span class="sd">    ...                   b=ivy.array([5, 9, 7]))</span>
+<span class="sd">    &gt;&gt;&gt; z = ivy.Container.static_minimum(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([1, 3, 1]),</span>
+<span class="sd">        b: ivy.array([2, 8, 5])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
@@ -16279,6 +16321,20 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">        Container object with all sub-arrays having the minimum values computed.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With multiple :class:`ivy.Container` inputs:</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1, 3, 1]),</span>
+<span class="sd">    ...                   b=ivy.array([2, 8, 5]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([1, 5, 6]),</span>
+<span class="sd">    ...                   b=ivy.array([5, 9, 7]))</span>
+<span class="sd">    &gt;&gt;&gt; z = x.minimum(y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([1, 3, 1]),</span>
+<span class="sd">        b: ivy.array([2, 8, 5])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_minimum</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -16339,6 +16395,23 @@
 <span class="sd">    ret</span>
 <span class="sd">        An array with the elements of x1, but clipped to not be lower than the x2</span>
 <span class="sd">        values.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With one :class:`ivy.Container` input:</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1, 3], [2, 4], [3, 7]])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([1, 0,]),</span>
+<span class="sd">    ...                   b=ivy.array([-5, 9]))</span>
+<span class="sd">    &gt;&gt;&gt; z = ivy.Container.static_maximum(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([[1, 3],</span>
+<span class="sd">                      [2, 4],</span>
+<span class="sd">                      [3, 7]]),</span>
+<span class="sd">        b: ivy.array([[1, 9],</span>
+<span class="sd">                      [2, 9],</span>
+<span class="sd">                      [3, 9]])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
         <span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
@@ -16400,6 +16473,23 @@
 <span class="sd">    ret</span>
 <span class="sd">        An array with the elements of x1, but clipped to not be lower than the x2</span>
 <span class="sd">        values.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With one :class:`ivy.Container` input:</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1, 3], [2, 4], [3, 7]])</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([1, 0,]),</span>
+<span class="sd">    ...                   b=ivy.array([-5, 9]))</span>
+<span class="sd">    &gt;&gt;&gt; z = x.maximum(y)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([[1, 3],</span>
+<span class="sd">                      [2, 4],</span>
+<span class="sd">                      [3, 7]]),</span>
+<span class="sd">        b: ivy.array([[1, 9],</span>
+<span class="sd">                      [2, 9],</span>
+<span class="sd">                      [3, 9]])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_maximum</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -17861,8 +17951,8 @@
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container({&#39;a&#39;: a, &#39;b&#39;: b})</span>
 <span class="sd">    &gt;&gt;&gt; print(x.avg_pool2d((2, 2), (1, 1), &quot;SAME&quot;))</span>
 <span class="sd">    {</span>
-<span class="sd">        a: ivy.array([], shape=(2, 0, 2, 2)),</span>
-<span class="sd">        b: (&lt;class ivy.array.array.Array&gt; shape=[2, 3, 2, 2])</span>
+<span class="sd">        a: (&lt;class ivy.array.array.Array&gt; shape=[2, 1, 3, 2]),</span>
+<span class="sd">        b: (&lt;class ivy.array.array.Array&gt; shape=[2, 4, 3, 2])</span>
 <span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_avg_pool2d</span><span class="p">(</span>
@@ -37511,8 +37601,8 @@
 <span class="sd">    &gt;&gt;&gt; z = x.min(axis=1)</span>
 <span class="sd">    &gt;&gt;&gt; print(z)</span>
 <span class="sd">    {</span>
-<span class="sd">        a: ivy.array([1, 0]),</span>
-<span class="sd">        b: ivy.array([2, 0])</span>
+<span class="sd">        a:ivy.array([1,-1]),</span>
+<span class="sd">        b:ivy.array([2,0])</span>
 <span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_inplace</span><span class="p">(</span>
