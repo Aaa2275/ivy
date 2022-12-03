@@ -456,6 +456,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_unravel_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
 
+
+
 <div class="viewcode-block" id="ContainerWithStatisticalExperimental.static_quantile"><a class="viewcode-back" href="../../../../data_classes/container/experimental.html#ivy.container.experimental.ContainerWithStatisticalExperimental.static_quantile">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">static_quantile</span><span class="p">(</span>
         <span class="n">a</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
@@ -475,25 +477,20 @@
 <span class="sd">        This method simply wraps the function, and so the docstring</span>
 <span class="sd">        for ivy.quantile also applies to this method with minimal</span>
 <span class="sd">        changes.</span>
-
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        a</span>
 <span class="sd">            Input container including arrays.</span>
-
 <span class="sd">        q</span>
 <span class="sd">            Quantile or sequence of quantiles to compute, which must be</span>
 <span class="sd">            between 0 and 1 inclusive.</span>
-
 <span class="sd">        axis</span>
 <span class="sd">            Axis or axes along which the quantiles are computed. The default</span>
 <span class="sd">            is to compute the quantile(s) along a flattened version of the array.</span>
-
 <span class="sd">        keepdims</span>
 <span class="sd">            If this is set to True, the axes which are reduced are left in the result</span>
 <span class="sd">            as dimensions with size one. With this option, the result will broadcast</span>
 <span class="sd">            correctly against the original array a.</span>
-
 <span class="sd">        interpolation</span>
 <span class="sd">            {&#39;nearest&#39;, &#39;linear&#39;, &#39;lower&#39;, &#39;higher&#39;, &#39;midpoint&#39;}. Default value:</span>
 <span class="sd">            &#39;linear&#39;.</span>
@@ -506,21 +503,17 @@
 <span class="sd">            - nearest: i or j, whichever is nearest.</span>
 <span class="sd">            - midpoint: (i + j) / 2. linear and midpoint interpolation do not work with</span>
 <span class="sd">            integer dtypes.</span>
-
 <span class="sd">        out</span>
 <span class="sd">            optional output array, for writing the result to.</span>
-
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        ret</span>
 <span class="sd">            Container with (rank(q) + N - len(axis)) dimensional arrays of same dtype</span>
 <span class="sd">            as input arrays in the container, or, if axis is None, rank(q) arrays. The</span>
 <span class="sd">            first rank(q) dimensions index quantiles for different values of q.</span>
-
 <span class="sd">        Examples</span>
 <span class="sd">        -------------------</span>
 <span class="sd">        With one :class:`ivy.Container` input:</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -532,7 +525,6 @@
 <span class="sd">            x: 3.5,</span>
 <span class="sd">            y: 2.5</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -544,7 +536,6 @@
 <span class="sd">            x: ivy.array([3.5, 6.25]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -557,7 +548,6 @@
 <span class="sd">                        [8.25, 5.75, 3.25]]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="sd">                )</span>
@@ -569,7 +559,6 @@
 <span class="sd">                    [[8.5], </span>
 <span class="sd">                    [2.5]]])</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -616,25 +605,20 @@
 <span class="sd">        This method simply wraps the function, and so the docstring</span>
 <span class="sd">        for ivy.quantile also applies to this method with minimal</span>
 <span class="sd">        changes.</span>
-
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        a</span>
 <span class="sd">            Input container including arrays.</span>
-
 <span class="sd">        q</span>
 <span class="sd">            Quantile or sequence of quantiles to compute, which must be</span>
 <span class="sd">            between 0 and 1 inclusive.</span>
-
 <span class="sd">        axis</span>
 <span class="sd">            Axis or axes along which the quantiles are computed. The default</span>
 <span class="sd">            is to compute the quantile(s) along a flattened version of the array.</span>
-
 <span class="sd">        keepdims</span>
 <span class="sd">            If this is set to True, the axes which are reduced are left in the result</span>
 <span class="sd">            as dimensions with size one. With this option, the result will broadcast</span>
 <span class="sd">            correctly against the original array a.</span>
-
 <span class="sd">        interpolation</span>
 <span class="sd">            {&#39;nearest&#39;, &#39;linear&#39;, &#39;lower&#39;, &#39;higher&#39;, &#39;midpoint&#39;}. Default value:</span>
 <span class="sd">            &#39;linear&#39;.</span>
@@ -647,21 +631,17 @@
 <span class="sd">            - nearest: i or j, whichever is nearest.</span>
 <span class="sd">            - midpoint: (i + j) / 2. linear and midpoint interpolation do not work with</span>
 <span class="sd">            integer dtypes.</span>
-
 <span class="sd">        out</span>
 <span class="sd">            optional output array, for writing the result to.</span>
-
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        ret</span>
 <span class="sd">            Container with (rank(q) + N - len(axis)) dimensional arrays of same dtype</span>
 <span class="sd">            as input arrays in the container, or, if axis is None, rank(q) arrays. The </span>
 <span class="sd">            first rank(q) dimensions index quantiles for different values of q.</span>
-
 <span class="sd">        Examples</span>
 <span class="sd">        -------------------</span>
 <span class="sd">        With one :class:`ivy.Container` input:</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -673,7 +653,6 @@
 <span class="sd">            x: 3.5,</span>
 <span class="sd">            y: 2.5</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -685,7 +664,6 @@
 <span class="sd">            x: ivy.array([3.5, 6.25]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -698,7 +676,6 @@
 <span class="sd">                        [8.25, 5.75, 3.25]]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="sd">                )</span>
@@ -710,7 +687,6 @@
 <span class="sd">                    [[8.5], </span>
 <span class="sd">                    [2.5]]])</span>
 <span class="sd">        }</span>
-
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
