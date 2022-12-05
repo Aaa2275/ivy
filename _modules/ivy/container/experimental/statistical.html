@@ -475,6 +475,7 @@
 <span class="sd">        This method simply wraps the function, and so the docstring</span>
 <span class="sd">        for ivy.quantile also applies to this method with minimal</span>
 <span class="sd">        changes.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        a</span>
@@ -503,14 +504,16 @@
 <span class="sd">            integer dtypes.</span>
 <span class="sd">        out</span>
 <span class="sd">            optional output array, for writing the result to.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        ret</span>
 <span class="sd">            Container with (rank(q) + N - len(axis)) dimensional arrays of same dtype</span>
 <span class="sd">            as input arrays in the container, or, if axis is None, rank(q) arrays. The</span>
 <span class="sd">            first rank(q) dimensions index quantiles for different values of q.</span>
+
 <span class="sd">        Examples</span>
-<span class="sd">        -------------------</span>
+<span class="sd">        --------</span>
 <span class="sd">        With one :class:`ivy.Container` input:</span>
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
@@ -523,6 +526,7 @@
 <span class="sd">            x: 3.5,</span>
 <span class="sd">            y: 2.5</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -534,6 +538,7 @@
 <span class="sd">            x: ivy.array([3.5, 6.25]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -546,6 +551,7 @@
 <span class="sd">                        [8.25, 5.75, 3.25]]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="sd">                )</span>
@@ -557,6 +563,7 @@
 <span class="sd">                    [[8.5], </span>
 <span class="sd">                    [2.5]]])</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -570,7 +577,6 @@
 <span class="sd">            y: ivy.array([1., 3.])</span>
 <span class="sd">        }   </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
             <span class="s2">&quot;quantile&quot;</span><span class="p">,</span>
             <span class="n">a</span><span class="p">,</span>
@@ -603,6 +609,7 @@
 <span class="sd">        This method simply wraps the function, and so the docstring</span>
 <span class="sd">        for ivy.quantile also applies to this method with minimal</span>
 <span class="sd">        changes.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        a</span>
@@ -631,15 +638,18 @@
 <span class="sd">            integer dtypes.</span>
 <span class="sd">        out</span>
 <span class="sd">            optional output array, for writing the result to.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        ret</span>
 <span class="sd">            Container with (rank(q) + N - len(axis)) dimensional arrays of same dtype</span>
 <span class="sd">            as input arrays in the container, or, if axis is None, rank(q) arrays. The </span>
 <span class="sd">            first rank(q) dimensions index quantiles for different values of q.</span>
+
 <span class="sd">        Examples</span>
-<span class="sd">        -------------------</span>
+<span class="sd">        --------</span>
 <span class="sd">        With one :class:`ivy.Container` input:</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -651,6 +661,7 @@
 <span class="sd">            x: 3.5,</span>
 <span class="sd">            y: 2.5</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -662,6 +673,7 @@
 <span class="sd">            x: ivy.array([3.5, 6.25]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>
@@ -674,6 +686,7 @@
 <span class="sd">                        [8.25, 5.75, 3.25]]),</span>
 <span class="sd">            y: ivy.array([2.5, 3.25])</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="sd">                )</span>
@@ -685,6 +698,7 @@
 <span class="sd">                    [[8.5], </span>
 <span class="sd">                    [2.5]]])</span>
 <span class="sd">        }</span>
+
 <span class="sd">        &gt;&gt;&gt; a = ivy.Container(</span>
 <span class="sd">                                x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="sd">                                y=ivy.array([1., 2., 3., 4.])</span>

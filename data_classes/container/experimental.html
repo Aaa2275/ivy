@@ -4930,16 +4930,13 @@ keepdims any exceptions will be raised.</p></li>
 <dd><p>ivy.Container instance method variant of ivy.quantile.
 This method simply wraps the function, and so the docstring
 for ivy.quantile also applies to this method with minimal
-changes.
-:param a: Input container including arrays.
-:type q: <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../array/array/Array.html#ivy.array.array.Array" title="ivy.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]
-:param q: Quantile or sequence of quantiles to compute, which must be</p>
-<blockquote>
-<div><p>between 0 and 1 inclusive.</p>
-</div></blockquote>
+changes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – Input container including arrays.</p></li>
+<li><p><strong>q</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../array/array/Array.html#ivy.array.array.Array" title="ivy.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Quantile or sequence of quantiles to compute, which must be
+between 0 and 1 inclusive.</p></li>
 <li><p><strong>axis</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]]) – Axis or axes along which the quantiles are computed. The default (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
 is to compute the quantile(s) along a flattened version of the array.</p></li>
 <li><p><strong>keepdims</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If this is set to True, the axes which are reduced are left in the result (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)
@@ -4969,21 +4966,21 @@ first rank(q) dimensions index quantiles for different values of q.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>With one <code class="xref py py-class docutils literal notranslate"><span class="pre">ivy.Container</span></code> input:
-&gt;&gt;&gt; a = ivy.Container(</p>
-<blockquote>
-<div><p>x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),
-y=ivy.array([1., 2., 3., 4.])
-)</p>
-</div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="mf">0.5</span>
+<p>With one <code class="xref py py-class docutils literal notranslate"><span class="pre">ivy.Container</span></code> input:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+<span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
+<span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
+<span class="go">                        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="go">{</span>
 <span class="go">    x: 3.5,</span>
 <span class="go">    y: 2.5</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
 <span class="go">                        )</span>
@@ -4994,7 +4991,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">    x: ivy.array([3.5, 6.25]),</span>
 <span class="go">    y: ivy.array([2.5, 3.25])</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
 <span class="go">                        )</span>
@@ -5006,7 +5005,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">                [8.25, 5.75, 3.25]]),</span>
 <span class="go">    y: ivy.array([2.5, 3.25])</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">        x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="go">        )</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -5017,7 +5018,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">            [[8.5],</span>
 <span class="go">            [2.5]]])</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
 <span class="go">                        )</span>
@@ -5115,17 +5118,13 @@ keepdims any exceptions will be raised.</p></li>
 <dd><p>ivy.Container static method variant of ivy.quantile.
 This method simply wraps the function, and so the docstring
 for ivy.quantile also applies to this method with minimal
-changes.
-:type a: <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code>, <a class="reference internal" href="../array/array/Array.html#ivy.array.array.Array" title="ivy.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]
-:param a: Input container including arrays.
-:type q: <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../array/array/Array.html#ivy.array.array.Array" title="ivy.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]
-:param q: Quantile or sequence of quantiles to compute, which must be</p>
-<blockquote>
-<div><p>between 0 and 1 inclusive.</p>
-</div></blockquote>
+changes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code>, <a class="reference internal" href="../array/array/Array.html#ivy.array.array.Array" title="ivy.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]) – Input container including arrays.</p></li>
+<li><p><strong>q</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../array/array/Array.html#ivy.array.array.Array" title="ivy.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – Quantile or sequence of quantiles to compute, which must be
+between 0 and 1 inclusive.</p></li>
 <li><p><strong>axis</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]]) – Axis or axes along which the quantiles are computed. The default (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
 is to compute the quantile(s) along a flattened version of the array.</p></li>
 <li><p><strong>keepdims</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If this is set to True, the axes which are reduced are left in the result (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)
@@ -5169,7 +5168,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">    x: 3.5,</span>
 <span class="go">    y: 2.5</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
 <span class="go">                        )</span>
@@ -5180,7 +5181,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">    x: ivy.array([3.5, 6.25]),</span>
 <span class="go">    y: ivy.array([2.5, 3.25])</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
 <span class="go">                        )</span>
@@ -5192,7 +5195,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">                [8.25, 5.75, 3.25]]),</span>
 <span class="go">    y: ivy.array([2.5, 3.25])</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">        x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="go">        )</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">static_quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -5203,7 +5208,9 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">            [[8.5],</span>
 <span class="go">            [2.5]]])</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
 <span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
 <span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
 <span class="go">                        )</span>

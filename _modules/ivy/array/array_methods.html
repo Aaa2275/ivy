@@ -6329,22 +6329,27 @@
 <span class="sd">        if axis is None, a rank(q) array. The first rank(q) dimensions index </span>
 <span class="sd">        quantiles for different values of q.</span>
 
-<span class="sd">    Functional Examples</span>
-<span class="sd">    -------------------</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; a = ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="sd">    &gt;&gt;&gt; q = ivy.array(0.5)</span>
 <span class="sd">    &gt;&gt;&gt; a.quantile(q)</span>
 <span class="sd">    ivy.array(3.5)</span>
+
 <span class="sd">    &gt;&gt;&gt; a = ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
 <span class="sd">    &gt;&gt;&gt; q = 0.5</span>
 <span class="sd">    &gt;&gt;&gt; a.quantile(q)</span>
 <span class="sd">    ivy.array(3.5)</span>
+
 <span class="sd">    &gt;&gt;&gt; a.quantile(q, axis=0)</span>
 <span class="sd">    ivy.array([6.5, 4.5, 2.5])</span>
+
 <span class="sd">    &gt;&gt;&gt; a.quantile(q, axis=1)</span>
 <span class="sd">    ivy.array([7.,  2.])</span>
+
 <span class="sd">    &gt;&gt;&gt; a.quantile(q, axis=1, keepdims=True)</span>
 <span class="sd">    ivy.array([[7.],[2.]])</span>
+
 <span class="sd">    &gt;&gt;&gt; a = ivy.array([1., 2., 3., 4.])</span>
 <span class="sd">    &gt;&gt;&gt; q = ivy.array([0.3, 0.7])</span>
 <span class="sd">    &gt;&gt;&gt; a.quantile(q, interpolation=&#39;lower&#39;)</span>
