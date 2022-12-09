@@ -68,6 +68,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../avg_pool2d.html">avg_pool2d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../avg_pool3d.html">avg_pool3d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dct.html">dct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fft.html">fft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dropout1d.html">dropout1d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../isin.html">isin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../msort.html">msort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../triu_indices.html">triu_indices</a></li>
@@ -83,6 +85,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../dirichlet.html">dirichlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../beta.html">beta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gamma.html">gamma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binary_cross_entropy_with_logits.html">binary_cross_entropy_with_logits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../flatten.html">flatten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../moveaxis.html">moveaxis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ndenumerate.html">ndenumerate</a></li>
@@ -123,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../trapz.html">trapz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../float_power.html">float_power</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exp2.html">exp2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../copysign.html">copysign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../count_nonzero.html">count_nonzero</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nansum.html">nansum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gcd.html">gcd</a></li>
@@ -258,11 +262,9 @@ first rank(q) dimensions index quantiles for different values of q.</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>With one <code class="xref py py-class docutils literal notranslate"><span class="pre">ivy.Container</span></code> input:
-&gt;&gt;&gt; a = ivy.Container(</p>
+&gt;&gt;&gt; a = ivy.Container(x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</p>
 <blockquote>
-<div><p>x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),
-y=ivy.array([1., 2., 3., 4.])
-)</p>
+<div><p>y=ivy.array([1., 2., 3., 4.]))</p>
 </div></blockquote>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">static_quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
@@ -273,10 +275,8 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">}</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
-<span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
-<span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
-<span class="go">                        )</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]),</span>
+<span class="go">                      y=ivy.array([1., 2., 3., 4.]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">static_quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -286,10 +286,8 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">}</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
-<span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
-<span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
-<span class="go">                        )</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]),</span>
+<span class="go">                      y=ivy.array([1., 2., 3., 4.]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">static_quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -300,9 +298,7 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">}</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
-<span class="go">        x=ivy.array([[10., 7., 4.], [3., 2., 1.]])</span>
-<span class="go">        )</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">static_quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="go">{</span>
@@ -313,10 +309,8 @@ y=ivy.array([1., 2., 3., 4.])
 <span class="go">}</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
-<span class="go">                        x=ivy.array([[10., 7., 4.], [3., 2., 1.]]),</span>
-<span class="go">                        y=ivy.array([1., 2., 3., 4.])</span>
-<span class="go">                        )</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]),</span>
+<span class="go">                      y=ivy.array([1., 2., 3., 4.]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="o">.</span><span class="n">static_quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
